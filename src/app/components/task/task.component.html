@@ -1,0 +1,38 @@
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-lg-6 col-md-8 col-sm-10">
+            <div class="task p-4">
+                <div *ngIf="!taskId">
+                    <p>id not found</p>
+                </div>
+                <div *ngIf="taskId">
+                    <h2 class="mb-4">Details of {{task.title}}</h2>
+                    <form>
+                        <div class="mb-3">
+                            <label for="taskDay" class="form-label">Date</label>
+                            <input type="date" class="form-control" name="date" [(ngModel)]="task.date">
+                        </div>
+                        <div class="mb-3">
+                            <label for="taskTime" class="form-label">Time</label>
+                            <input type="time" class="form-control" id="taskTime" name="time" [(ngModel)]="task.time">
+                        </div>
+                        <div class="mb-3">
+                            <label for="taskTitle" class="form-label">Title</label>
+                            <input type="text" class="form-control" id="taskTitle" name="title" [(ngModel)]="task.title">
+                        </div>
+                        <div class="mb-3">
+                            <label for="taskDescription" class="form-label">Description</label>
+                            <textarea class="form-control" id="taskDescription" name="description" [(ngModel)]="task.description"></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <button type="button" class="btn btn-primary" (click)="updateTask()">Update Task</button>
+                            <button type="button" class="btn btn-danger" (click)="deleteTask()">Delete</button>
+                            <a routerLink="/" class="btn btn-secondary">Cancel</a>
+                        </div>
+                    </form>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

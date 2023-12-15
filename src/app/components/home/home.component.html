@@ -1,0 +1,38 @@
+<div class="container mt-4">
+    <div class="row">
+      <div *ngIf="tasksService.tasks.length == 0" class="col-12">
+        <p>no tasks for today</p>
+      </div>
+      <ng-container *ngIf="tasksService.tasks.length != 0">
+        <div *ngFor="let date of getUniqueDates()" class="col d-flex justify-content-center">
+          <div *ngIf="getTasksByDate(date).length > 0" class="TaskOfDay">
+            <p> &nbsp; <i class="bi bi-stars"> &nbsp; </i>{{ date }}</p>
+            
+            <!-- Task display loop -->
+            <span *ngFor="let task of getTasksByDate(date); let i = index">
+              <div class="form-check">
+                <input name="task" type="checkbox" class="form-check-input" [(ngModel)]="task.completed">
+                <label class="form-check-label" for="task">
+                  &nbsp; {{ task.time }}&nbsp; {{ task.title }} &nbsp;
+                </label>
+                <a [routerLink]="['/task', getTaskIndex(date, i)]"><i class="bi bi-pencil-square"></i>&nbsp;</a>
+                <a (click)="deleteTask(getTaskIndex(date, i))"><i class="bi bi-trash-fill"></i></a>
+              
+              </div>
+              <br>
+            </span>
+
+            
+            <div class="progress-aria">
+            <div class="progress">
+              <div class="progress-bar" aria-valuenow="getCompletedPercentage(date)" role="progressbar" [style.width.%]="getCompletedPercentage(date)"> 
+              </div>
+            </div>
+            <p class="proportional-nums">{{ getCompletedPercentage(date) }}%</p>
+            </div>
+          </div>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+  

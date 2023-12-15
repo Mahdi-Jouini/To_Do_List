@@ -1,0 +1,22 @@
+<div class="modal-lg " >
+<div class="modal-header">
+    <h5 class="modal-title" id="exampleModalLabel"><i class="bi bi-stars"></i> Add new task</h5>
+    <button type="button" class="btn-close  " aria-label="Close" (click)="modalRef.close()"></button>
+  </div>
+  <div class="modal-body " >
+        <input #taskDate type="date" class="form-control " placeholder="task date"> <br>
+        <input #taskTime type="time" class="form-control " placeholder="task time"> <br>
+        <input #taskTitle type="text" class="form-control " placeholder="task title"> <br>
+        <textarea #taskDecription placeholder="task decription" class="form-control "></textarea> <br>    
+  </div>
+
+
+  <div class="modal-footer">
+    <button type="button" class="btn btn-secondary" (click)="modalRef.close()">
+      Close
+    </button>
+    <button type="button" class="btn btn-primary" (click)="saveTask(taskTitle,taskDecription,taskDate,taskTime)">Save changes</button>
+  </div> 
+
+
+ 
